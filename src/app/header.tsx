@@ -6,7 +6,7 @@ const Header = () => {
     <header className="py-3">
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <h1 className="font-semibold text-lg">Blogsve</h1>
+        <h1 className="font-semibold text-xl">Blogsve</h1>
         {/* User Menu */}
         <div>
           <SignInButton mode="modal">
