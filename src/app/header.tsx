@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
+import ModeToggle from "./mode-toggle";
 
 const Header = () => {
   return (
@@ -8,13 +9,14 @@ const Header = () => {
         {/* Logo */}
         <h1 className="font-semibold text-xl">Blogsve</h1>
         {/* User Menu */}
-        <div>
+        <div className="flex items-center gap-2">
           <SignInButton mode="modal">
             <Button>Login</Button>
           </SignInButton>
           <SignOutButton>
             <UserButton />
           </SignOutButton>
+          <ModeToggle />
         </div>
       </div>
     </header>
