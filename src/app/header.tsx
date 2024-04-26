@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
-import ModeToggle from "./mode-toggle";
+import ModeToggle from "../components/mode-toggle";
 
 const Header = () => {
   return (
