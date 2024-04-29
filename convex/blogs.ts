@@ -5,7 +5,7 @@ import { mutation, query } from "./_generated/server";
 export const getBlogs = query({
     args: {},
     handler: async(ctx) => {
-        return await ctx.db.query("blogs").collect()
+         await ctx.db.query("blogs").collect()
     }
 })
 
@@ -13,6 +13,6 @@ export const getBlogs = query({
 export const createBlog = mutation({
     args: { title: v.string(), dateCreated: v.string(), body: v.string() },
     handler: async (ctx, args) => {
-        return await ctx.db.insert("blogs", {...args})
+         await ctx.db.insert("blogs", {...args})
     }
 })
