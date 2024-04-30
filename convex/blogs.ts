@@ -9,6 +9,13 @@ export const getBlogs = query({
     }
 })
 
+export const getBlog = query({
+    args: { blogId: v.number()},
+    handler: async(ctx) => {
+         await ctx.db.query("blogs").collect()
+    }
+})
+
 // Mutations
 export const createBlog = mutation({
     args: { title: v.string(), dateCreated: v.string(), body: v.string() },
