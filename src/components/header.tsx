@@ -7,13 +7,13 @@ import {
   UserButton,
   useUser,
 } from "@clerk/nextjs";
-import ModeToggle from "../components/mode-toggle";
+import ModeToggle from "./mode-toggle";
 import { LogInIcon, PlusIcon } from "lucide-react";
 
 const Header = () => {
   const { isSignedIn } = useUser();
   return (
-    <header className="py-3">
+    <header className="py-3 border-b">
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <h1 className="font-semibold text-xl">Blogsve</h1>
