@@ -1,6 +1,7 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
+// Implement update and deletion of blogs
 // Queries
 export const getBlogs = query({
     args: {},
