@@ -11,9 +11,11 @@ export const getBlogs = query({
 })
 
 export const getBlog = query({
-    args: { blogId: v.number()},
-    handler: async(ctx) => {
-         await ctx.db.query("blogs").collect()
+    args: { blogId: v.id("blogs")},
+    handler: async(ctx, args) => {
+        const blog = await ctx.db.query("blogs").filter((q) => q.eq(q.field("_id"), args.blogId));
+
+        return blog
     }
 })
 
