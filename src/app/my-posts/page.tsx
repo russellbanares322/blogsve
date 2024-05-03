@@ -1,5 +1,9 @@
 const MyPosts = () => {
-  return <div>My Posts</div>;
+  return (
+    <div className="container">
+      <p>My Posts</p>
+    </div>
+  );
 };
 
 export default MyPosts;
