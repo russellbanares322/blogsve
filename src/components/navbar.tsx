@@ -10,10 +10,10 @@ import {
 import ModeToggle from "./mode-toggle";
 import { LogInIcon, PlusIcon } from "lucide-react";
 
-const Header = () => {
+const Navbar = () => {
   const { isSignedIn } = useUser();
   return (
-    <header className="py-3 border-b">
+    <nav className="py-3 border-b">
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <h1 className="font-semibold text-xl">Blogsve</h1>
@@ -37,8 +37,8 @@ const Header = () => {
           <ModeToggle />
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
-export default Header;
+export default Navbar;
