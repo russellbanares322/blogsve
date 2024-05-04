@@ -6,5 +6,6 @@ export default defineSchema({
     body: v.string(),
     category: v.string(),
     title: v.string(),
+    authorId: v.string()
   }),
 });
