@@ -20,7 +20,7 @@ const CreateBlogFormModal = () => {
           <SquarePlus className="h-4 w-4 mr-2" /> Create Blog
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[550px]">
         <DialogHeader>
           <DialogTitle>Create Blog</DialogTitle>
         </DialogHeader>
@@ -47,7 +47,9 @@ const CreateBlogFormModal = () => {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button color="green" type="submit">
+            Submit
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
