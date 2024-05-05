@@ -25,15 +25,11 @@ const CreateBlogFormModal = () => {
           <DialogTitle>Create Blog</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="name" className="text-left">
-              Name
+          <div className="grid w-full items-center gap-1.5">
+            <Label htmlFor="title" className="text-left">
+              Title
             </Label>
-            <Input
-              id="name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
+            <Input id="title" placeholder="Please input blog title..." />
           </div>
           <div className="grid w-full max-w-sm items-center gap-1.5">
             <Label htmlFor="username" className="text-left">
