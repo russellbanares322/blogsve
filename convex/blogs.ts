@@ -25,7 +25,7 @@ export const getBlogByAuthorId = query({
 
 // Mutations
 export const createBlog = mutation({
-    args: { title: v.string(), body: v.string(), category: v.string(), authorId: v.string()},
+    args: { title: v.string(), description: v.string(), category: v.string(), authorId: v.string()},
     handler: async (ctx, args) => {
         return await ctx.db.insert("blogs", {...args})
     }

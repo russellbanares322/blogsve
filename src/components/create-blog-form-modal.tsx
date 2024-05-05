@@ -8,29 +8,41 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { SquarePlus } from "lucide-react";
 import { renderLabelAndInput } from "@/lib/renderLabelAndInput";
 import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
+import { useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 const CreateBlogFormModal = () => {
   const { user } = useUser();
+  const createBlog = useMutation(api.blogs.createBlog);
+
   const [blogFormInputs, setBlogFormInputs] = useState({
     title: "",
-    body: "",
+    description: "",
     category: "",
-    authorId: user?.id,
+    authorId: user?.id as string,
   });
 
   // For dynamically getting blog form input values
   const handleBlogFormInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { id, value } = e.target;
 
     setBlogFormInputs({ ...blogFormInputs, [id]: value });
+  };
+
+  const onSubmit = () => {
+    createBlog(blogFormInputs);
+    setBlogFormInputs({
+      ...blogFormInputs,
+      title: "",
+      description: "",
+      category: "",
+    });
   };
 
   return (
@@ -51,6 +63,7 @@ const CreateBlogFormModal = () => {
             placeholder: "Please input blog title...",
             onChange: handleBlogFormInputChange,
             value: blogFormInputs.title,
+            inputComponentType: "input",
           })}
           {renderLabelAndInput({
             label: "Category",
@@ -58,10 +71,19 @@ const CreateBlogFormModal = () => {
             placeholder: "Please input blog category...",
             onChange: handleBlogFormInputChange,
             value: blogFormInputs.category,
+            inputComponentType: "input",
+          })}
+          {renderLabelAndInput({
+            label: "Description",
+            inputId: "description",
+            placeholder: "Please input blog description...",
+            onChange: handleBlogFormInputChange,
+            value: blogFormInputs.description,
+            inputComponentType: "textarea",
           })}
         </div>
         <DialogFooter>
-          <Button color="green" type="submit">
+          <Button color="green" onClick={onSubmit}>
             Submit
           </Button>
         </DialogFooter>

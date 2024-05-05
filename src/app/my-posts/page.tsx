@@ -23,6 +23,7 @@ const MyPosts = () => {
           <CreateBlogFormModal />
         </div>
       )}
+      {!hasNoBlogCreated && JSON.stringify(myBlogs)}
     </div>
   );
 };
