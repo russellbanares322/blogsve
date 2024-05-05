@@ -25,8 +25,8 @@ const CreateBlogFormModal = () => {
           <DialogTitle>Create Blog</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="name" className="text-left">
               Name
             </Label>
             <Input
@@ -35,8 +35,8 @@ const CreateBlogFormModal = () => {
               className="col-span-3"
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="username" className="text-left">
               Username
             </Label>
             <Input
