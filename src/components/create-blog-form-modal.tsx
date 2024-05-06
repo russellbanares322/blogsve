@@ -18,7 +18,7 @@ import { api } from "../../convex/_generated/api";
 const CreateBlogFormModal = () => {
   const { user } = useUser();
   const createBlog = useMutation(api.blogs.createBlog);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [blogFormInputs, setBlogFormInputs] = useState({
     title: "",
     description: "",
