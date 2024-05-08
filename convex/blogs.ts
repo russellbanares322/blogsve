@@ -1,6 +1,14 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
+export type GetBlogsResponseData = {
+    _creationTime: number,
+    _id: string,
+    authorId: string,
+    category: string,
+    description: string
+}
+
 // Queries
 export const getBlogs = query({
     args: {},

@@ -4,6 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { useUser } from "@clerk/nextjs";
 import CreateUpdateBlogModal from "@/components/create-update-blog-modal";
+import BlogsDataDisplay from "./blogs-data-display";
 
 const MyPosts = () => {
   const { user } = useUser();
@@ -21,7 +22,8 @@ const MyPosts = () => {
           <CreateUpdateBlogModal />
         </div>
       )}
-      {!hasNoBlogCreated && JSON.stringify(myBlogs)}
+      {!hasNoBlogCreated &&
+        myBlogs?.map((blog) => <BlogsDataDisplay blogsData={blog} />)}
     </div>
   );
 };
