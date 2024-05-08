@@ -11,12 +11,20 @@ type RenderLabelAndInputProps = {
   ) => void;
   value: string | number | readonly string[] | undefined;
   inputComponentType: "textarea" | "input";
+  required?: boolean;
 };
 
 // This will handle dynamic rendering of form's label and input field
 export const renderLabelAndInput = (props: RenderLabelAndInputProps) => {
-  const { inputId, label, placeholder, onChange, value, inputComponentType } =
-    props;
+  const {
+    inputId,
+    label,
+    placeholder,
+    onChange,
+    value,
+    inputComponentType,
+    required = false,
+  } = props;
 
   // Dynamically render what input component it will be, depending on use case
   const renderInputComponent = () => {
@@ -27,6 +35,7 @@ export const renderLabelAndInput = (props: RenderLabelAndInputProps) => {
           id={inputId}
           placeholder={placeholder}
           value={value}
+          required={required}
         />
       ),
       input: (
@@ -35,6 +44,7 @@ export const renderLabelAndInput = (props: RenderLabelAndInputProps) => {
           id={inputId}
           placeholder={placeholder}
           value={value}
+          required={required}
         />
       ),
     };

@@ -14,12 +14,20 @@ import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import LoaderButton from "./loader-button";
 import { Button } from "./ui/button";
+import CreateUpdateBlogForm from "./create-update-blog-form";
+
+export type TBlogFormInputs = {
+  title: string;
+  description: string;
+  category: string;
+  authorId: string;
+};
 
 const CreateUpdateBlogModal = () => {
   const { user } = useUser();
   const createBlog = useMutation(api.blogs.createBlog);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [blogFormInputs, setBlogFormInputs] = useState({
+  const [blogFormInputs, setBlogFormInputs] = useState<TBlogFormInputs>({
     title: "",
     description: "",
     category: "",
@@ -35,7 +43,9 @@ const CreateUpdateBlogModal = () => {
     setBlogFormInputs({ ...blogFormInputs, [id]: value });
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     createBlog(blogFormInputs);
     setBlogFormInputs({
       ...blogFormInputs,
@@ -56,43 +66,12 @@ const CreateUpdateBlogModal = () => {
         <DialogHeader>
           <DialogTitle>Create Blog</DialogTitle>
         </DialogHeader>
-        <form onSubmit={onSubmit}>
-          <div className="grid gap-4 py-4">
-            {renderLabelAndInput({
-              label: "Title",
-              inputId: "title",
-              placeholder: "Please input blog title...",
-              onChange: handleBlogFormInputChange,
-              value: blogFormInputs.title,
-              inputComponentType: "input",
-            })}
-            {renderLabelAndInput({
-              label: "Category",
-              inputId: "category",
-              placeholder: "Please input blog category...",
-              onChange: handleBlogFormInputChange,
-              value: blogFormInputs.category,
-              inputComponentType: "input",
-            })}
-            {renderLabelAndInput({
-              label: "Description",
-              inputId: "description",
-              placeholder: "Please input blog description...",
-              onChange: handleBlogFormInputChange,
-              value: blogFormInputs.description,
-              inputComponentType: "textarea",
-            })}
-          </div>
-          <DialogFooter>
-            <LoaderButton
-              isLoading={isSubmitting}
-              loadingText="Submitting..."
-              type="submit"
-            >
-              Submit
-            </LoaderButton>
-          </DialogFooter>
-        </form>
+        <CreateUpdateBlogForm
+          onSubmit={onSubmit}
+          handleBlogFormInputChange={handleBlogFormInputChange}
+          blogFormInputs={blogFormInputs}
+          isSubmitting={isSubmitting}
+        />
       </DialogContent>
     </Dialog>
   );
