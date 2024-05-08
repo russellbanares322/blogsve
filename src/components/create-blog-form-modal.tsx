@@ -56,37 +56,39 @@ const CreateBlogFormModal = () => {
         <DialogHeader>
           <DialogTitle>Create Blog</DialogTitle>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          {renderLabelAndInput({
-            label: "Title",
-            inputId: "title",
-            placeholder: "Please input blog title...",
-            onChange: handleBlogFormInputChange,
-            value: blogFormInputs.title,
-            inputComponentType: "input",
-          })}
-          {renderLabelAndInput({
-            label: "Category",
-            inputId: "category",
-            placeholder: "Please input blog category...",
-            onChange: handleBlogFormInputChange,
-            value: blogFormInputs.category,
-            inputComponentType: "input",
-          })}
-          {renderLabelAndInput({
-            label: "Description",
-            inputId: "description",
-            placeholder: "Please input blog description...",
-            onChange: handleBlogFormInputChange,
-            value: blogFormInputs.description,
-            inputComponentType: "textarea",
-          })}
-        </div>
-        <DialogFooter>
-          <Button color="green" onClick={onSubmit}>
-            Submit
-          </Button>
-        </DialogFooter>
+        <form>
+          <div className="grid gap-4 py-4">
+            {renderLabelAndInput({
+              label: "Title",
+              inputId: "title",
+              placeholder: "Please input blog title...",
+              onChange: handleBlogFormInputChange,
+              value: blogFormInputs.title,
+              inputComponentType: "input",
+            })}
+            {renderLabelAndInput({
+              label: "Category",
+              inputId: "category",
+              placeholder: "Please input blog category...",
+              onChange: handleBlogFormInputChange,
+              value: blogFormInputs.category,
+              inputComponentType: "input",
+            })}
+            {renderLabelAndInput({
+              label: "Description",
+              inputId: "description",
+              placeholder: "Please input blog description...",
+              onChange: handleBlogFormInputChange,
+              value: blogFormInputs.description,
+              inputComponentType: "textarea",
+            })}
+          </div>
+          <DialogFooter>
+            <Button color="green" onClick={onSubmit}>
+              Submit
+            </Button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );
