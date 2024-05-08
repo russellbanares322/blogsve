@@ -15,7 +15,7 @@ import { api } from "../../convex/_generated/api";
 import LoaderButton from "./loader-button";
 import { Button } from "./ui/button";
 
-const CreateBlogFormModal = () => {
+const CreateUpdateBlogModal = () => {
   const { user } = useUser();
   const createBlog = useMutation(api.blogs.createBlog);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,7 +56,7 @@ const CreateBlogFormModal = () => {
         <DialogHeader>
           <DialogTitle>Create Blog</DialogTitle>
         </DialogHeader>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="grid gap-4 py-4">
             {renderLabelAndInput({
               label: "Title",
@@ -98,4 +98,4 @@ const CreateBlogFormModal = () => {
   );
 };
 
-export default CreateBlogFormModal;
+export default CreateUpdateBlogModal;

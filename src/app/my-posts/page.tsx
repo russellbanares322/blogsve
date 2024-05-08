@@ -2,10 +2,8 @@
 
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
-import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
-import { SquarePlus } from "lucide-react";
-import CreateBlogFormModal from "@/components/create-blog-form-modal";
+import CreateUpdateBlogModal from "@/components/create-update-blog-modal";
 
 const MyPosts = () => {
   const { user } = useUser();
@@ -20,7 +18,7 @@ const MyPosts = () => {
       {hasNoBlogCreated && (
         <div className="flex items-center justify-center flex-col mt-10 gap-4">
           <h1>You haven't posted blog yet</h1>
-          <CreateBlogFormModal />
+          <CreateUpdateBlogModal />
         </div>
       )}
       {!hasNoBlogCreated && JSON.stringify(myBlogs)}
