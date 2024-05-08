@@ -1,24 +1,24 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { SquarePlus } from "lucide-react";
 import { renderLabelAndInput } from "@/lib/renderLabelAndInput";
 import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import LoaderButton from "./loader-button";
+import { Button } from "./ui/button";
 
 const CreateBlogFormModal = () => {
   const { user } = useUser();
   const createBlog = useMutation(api.blogs.createBlog);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [blogFormInputs, setBlogFormInputs] = useState({
     title: "",
     description: "",
@@ -84,9 +84,13 @@ const CreateBlogFormModal = () => {
             })}
           </div>
           <DialogFooter>
-            <Button color="green" onClick={onSubmit}>
+            <LoaderButton
+              isLoading={isSubmitting}
+              loadingText="Submitting..."
+              type="submit"
+            >
               Submit
-            </Button>
+            </LoaderButton>
           </DialogFooter>
         </form>
       </DialogContent>
