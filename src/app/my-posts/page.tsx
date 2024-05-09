@@ -15,15 +15,17 @@ const MyPosts = () => {
 
   return (
     <div className="container">
-      <p className="mt-10">My Posts</p>
+      <p className="page-title">My Posts</p>
       {hasNoBlogCreated && (
         <div className="flex items-center justify-center flex-col mt-10 gap-4">
           <h1>You haven't posted blog yet</h1>
           <CreateUpdateBlogModal />
         </div>
       )}
-      {!hasNoBlogCreated &&
-        myBlogs?.map((blog) => <BlogsDataDisplay blogsData={blog} />)}
+      <div className="grid grid-cols-1 md:grid-cols-5">
+        {!hasNoBlogCreated &&
+          myBlogs?.map((blog) => <BlogsDataDisplay blogsData={blog} />)}
+      </div>
     </div>
   );
 };

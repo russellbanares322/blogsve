@@ -73,4 +73,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  .page-title {
+    @apply my-10 font-semibold;
+  }
 }

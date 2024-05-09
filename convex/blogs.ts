@@ -5,6 +5,7 @@ export type GetBlogsResponseData = {
     _creationTime: number,
     _id: string,
     authorId: string,
+    title: string,
     category: string,
     description: string
 }
