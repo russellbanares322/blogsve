@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { GetBlogsResponseData } from "../../../convex/blogs";
+import { truncateText } from "@/lib/truncateText";
 
 type BlogsDataDisplayProps = {
   blogsData: GetBlogsResponseData;
@@ -17,7 +18,7 @@ const BlogsDataDisplay = ({ blogsData }: BlogsDataDisplayProps) => {
     <Card className="duration-75 cursor-pointer hover:shadow-md">
       <CardHeader>
         <CardTitle>{blogsData.title}</CardTitle>
-        <CardDescription>{blogsData.description}</CardDescription>
+        <CardDescription>{truncateText(blogsData.description)}</CardDescription>
       </CardHeader>
       <CardContent>
         <p>Card Content</p>
