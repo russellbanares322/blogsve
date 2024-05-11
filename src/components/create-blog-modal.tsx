@@ -83,7 +83,7 @@ const CreateBlogModal = ({ hasNoData }: CreateBlogModalProps) => {
   if (!hasNoData) {
     return renderDialogComponent(
       <Card className="flex items-center justify-center cursor-pointer">
-        <CardContent className="flex flex-col items-center justify-center gap-1">
+        <CardContent className="flex flex-col items-center justify-center gap-1 mt-5">
           <SquarePlus size={30} />
           <CardDescription className="text-md">Create Blog</CardDescription>
         </CardContent>
