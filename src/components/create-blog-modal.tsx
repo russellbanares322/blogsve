@@ -1,7 +1,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -13,6 +12,7 @@ import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Button } from "./ui/button";
 import CreateBlogForm from "./create-blog-form";
+import { Card, CardContent, CardDescription } from "@/components/ui/card";
 
 export type TBlogFormInputs = {
   title: string;
@@ -81,7 +81,14 @@ const CreateBlogModal = ({ hasNoData }: CreateBlogModalProps) => {
 
   // This will show if the user doesn't have any blogpost created yet
   if (!hasNoData) {
-    return renderDialogComponent(<Button>Click Me</Button>);
+    return renderDialogComponent(
+      <Card className="flex items-center justify-center cursor-pointer">
+        <CardContent className="flex flex-col items-center justify-center gap-1">
+          <SquarePlus size={30} />
+          <CardDescription className="text-md">Create Blog</CardDescription>
+        </CardContent>
+      </Card>
+    );
   }
 
   return renderDialogComponent(
