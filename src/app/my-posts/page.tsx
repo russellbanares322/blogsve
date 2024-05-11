@@ -22,10 +22,11 @@ const MyPosts = () => {
           <CreateUpdateBlogModal hasNoData />
         </div>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-5">
-        {!hasNoBlogCreated &&
-          myBlogs?.map((blog) => <BlogsDataDisplay blogsData={blog} />)}
-      </div>
+      {!hasNoBlogCreated && (
+        <div className="grid grid-cols-1 md:grid-cols-5">
+          {myBlogs?.map((blog) => <BlogsDataDisplay blogsData={blog} />)}
+        </div>
+      )}
     </div>
   );
 };
