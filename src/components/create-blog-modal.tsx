@@ -59,28 +59,35 @@ const CreateBlogModal = ({ hasNoData }: CreateBlogModalProps) => {
     });
   };
 
+  // For reusability and to render create blog form modal without repeating of code
+  const renderDialogComponent = (dialogTrigger: React.ReactNode) => {
+    return (
+      <Dialog>
+        <DialogTrigger asChild>{dialogTrigger}</DialogTrigger>
+        <DialogContent className="sm:max-w-[550px]">
+          <DialogHeader>
+            <DialogTitle>Create Blog</DialogTitle>
+          </DialogHeader>
+          <CreateBlogForm
+            onSubmit={onSubmit}
+            handleBlogFormInputChange={handleBlogFormInputChange}
+            blogFormInputs={blogFormInputs}
+            isSubmitting={isSubmitting}
+          />
+        </DialogContent>
+      </Dialog>
+    );
+  };
+
+  // This will show if the user doesn't have any blogpost created yet
   if (!hasNoData) {
-    return <h1>Hi</h1>;
+    return renderDialogComponent(<Button>Click Me</Button>);
   }
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button>
-          <SquarePlus className="h-4 w-4 mr-2" /> Create Blog
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[550px]">
-        <DialogHeader>
-          <DialogTitle>Create Blog</DialogTitle>
-        </DialogHeader>
-        <CreateBlogForm
-          onSubmit={onSubmit}
-          handleBlogFormInputChange={handleBlogFormInputChange}
-          blogFormInputs={blogFormInputs}
-          isSubmitting={isSubmitting}
-        />
-      </DialogContent>
-    </Dialog>
+
+  return renderDialogComponent(
+    <Button>
+      <SquarePlus className="h-4 w-4 mr-2" /> Create Blog
+    </Button>
   );
 };
 

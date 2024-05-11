@@ -23,7 +23,7 @@ const MyPosts = () => {
         </div>
       )}
       {!hasNoBlogCreated && (
-        <div className="grid grid-cols-1 md:grid-cols-5">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           <CreateBlogModal hasNoData={false} />
           {myBlogs?.map((blog) => <BlogsDataDisplay blogsData={blog} />)}
         </div>
