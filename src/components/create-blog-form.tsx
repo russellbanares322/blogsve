@@ -1,9 +1,9 @@
 import React from "react";
-import { TBlogFormInputs } from "./create-update-blog-modal";
+import { TBlogFormInputs } from "./create-blog-modal";
 import { renderLabelAndInput } from "@/lib/renderLabelAndInput";
 import LoaderButton from "./loader-button";
 
-type CreateUpdateBlogFormProps = {
+type CreateBlogFormProps = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleBlogFormInputChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -12,12 +12,12 @@ type CreateUpdateBlogFormProps = {
   isSubmitting: boolean;
 };
 
-const CreateUpdateBlogForm = ({
+const CreateBlogForm = ({
   onSubmit,
   handleBlogFormInputChange,
   blogFormInputs,
   isSubmitting,
-}: CreateUpdateBlogFormProps) => {
+}: CreateBlogFormProps) => {
   return (
     <form onSubmit={onSubmit}>
       <div className="grid gap-4 py-4">
@@ -62,4 +62,4 @@ const CreateUpdateBlogForm = ({
   );
 };
 
-export default CreateUpdateBlogForm;
+export default CreateBlogForm;

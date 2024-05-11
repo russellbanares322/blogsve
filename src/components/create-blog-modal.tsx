@@ -7,14 +7,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { SquarePlus } from "lucide-react";
-import { renderLabelAndInput } from "@/lib/renderLabelAndInput";
 import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import LoaderButton from "./loader-button";
 import { Button } from "./ui/button";
-import CreateUpdateBlogForm from "./create-update-blog-form";
+import CreateBlogForm from "./create-blog-form";
 
 export type TBlogFormInputs = {
   title: string;
@@ -23,11 +21,11 @@ export type TBlogFormInputs = {
   authorId: string;
 };
 
-type CreateUpdateBlogModalProps = {
+type CreateBlogModalProps = {
   hasNoData: boolean;
 };
 
-const CreateUpdateBlogModal = ({ hasNoData }: CreateUpdateBlogModalProps) => {
+const CreateBlogModal = ({ hasNoData }: CreateBlogModalProps) => {
   const { user } = useUser();
   const createBlog = useMutation(api.blogs.createBlog);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,28 +59,29 @@ const CreateUpdateBlogModal = ({ hasNoData }: CreateUpdateBlogModalProps) => {
     });
   };
 
-  if (hasNoData) {
-    return (
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button>
-            <SquarePlus className="h-4 w-4 mr-2" /> Create Blog
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[550px]">
-          <DialogHeader>
-            <DialogTitle>Create Blog</DialogTitle>
-          </DialogHeader>
-          <CreateUpdateBlogForm
-            onSubmit={onSubmit}
-            handleBlogFormInputChange={handleBlogFormInputChange}
-            blogFormInputs={blogFormInputs}
-            isSubmitting={isSubmitting}
-          />
-        </DialogContent>
-      </Dialog>
-    );
+  if (!hasNoData) {
+    return <h1>Hi</h1>;
   }
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>
+          <SquarePlus className="h-4 w-4 mr-2" /> Create Blog
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[550px]">
+        <DialogHeader>
+          <DialogTitle>Create Blog</DialogTitle>
+        </DialogHeader>
+        <CreateBlogForm
+          onSubmit={onSubmit}
+          handleBlogFormInputChange={handleBlogFormInputChange}
+          blogFormInputs={blogFormInputs}
+          isSubmitting={isSubmitting}
+        />
+      </DialogContent>
+    </Dialog>
+  );
 };
 
-export default CreateUpdateBlogModal;
+export default CreateBlogModal;
