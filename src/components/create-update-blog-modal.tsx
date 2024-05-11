@@ -23,7 +23,11 @@ export type TBlogFormInputs = {
   authorId: string;
 };
 
-const CreateUpdateBlogModal = () => {
+type CreateUpdateBlogModalProps = {
+  hasNoData: boolean;
+};
+
+const CreateUpdateBlogModal = ({ hasNoData }: CreateUpdateBlogModalProps) => {
   const { user } = useUser();
   const createBlog = useMutation(api.blogs.createBlog);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,8 +49,10 @@ const CreateUpdateBlogModal = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    createBlog(blogFormInputs);
+    setIsSubmitting(true);
+    createBlog(blogFormInputs).then((res) => {
+      setIsSubmitting(false);
+    });
     setBlogFormInputs({
       ...blogFormInputs,
       title: "",
@@ -55,26 +61,28 @@ const CreateUpdateBlogModal = () => {
     });
   };
 
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button>
-          <SquarePlus className="h-4 w-4 mr-2" /> Create Blog
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[550px]">
-        <DialogHeader>
-          <DialogTitle>Create Blog</DialogTitle>
-        </DialogHeader>
-        <CreateUpdateBlogForm
-          onSubmit={onSubmit}
-          handleBlogFormInputChange={handleBlogFormInputChange}
-          blogFormInputs={blogFormInputs}
-          isSubmitting={isSubmitting}
-        />
-      </DialogContent>
-    </Dialog>
-  );
+  if (hasNoData) {
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button>
+            <SquarePlus className="h-4 w-4 mr-2" /> Create Blog
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[550px]">
+          <DialogHeader>
+            <DialogTitle>Create Blog</DialogTitle>
+          </DialogHeader>
+          <CreateUpdateBlogForm
+            onSubmit={onSubmit}
+            handleBlogFormInputChange={handleBlogFormInputChange}
+            blogFormInputs={blogFormInputs}
+            isSubmitting={isSubmitting}
+          />
+        </DialogContent>
+      </Dialog>
+    );
+  }
 };
 
 export default CreateUpdateBlogModal;

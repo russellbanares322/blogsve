@@ -19,7 +19,7 @@ const MyPosts = () => {
       {hasNoBlogCreated && (
         <div className="flex items-center justify-center flex-col mt-10 gap-4">
           <h1>You haven't posted blog yet</h1>
-          <CreateUpdateBlogModal />
+          <CreateUpdateBlogModal hasNoData />
         </div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-5">
