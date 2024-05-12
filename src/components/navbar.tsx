@@ -8,7 +8,7 @@ import {
   useUser,
 } from "@clerk/nextjs";
 import ModeToggle from "./mode-toggle";
-import { LogInIcon, PlusIcon } from "lucide-react";
+import { LogInIcon } from "lucide-react";
 import Link from "next/link";
 
 const Navbar = () => {
