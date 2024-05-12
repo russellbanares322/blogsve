@@ -13,6 +13,7 @@ import { api } from "../../convex/_generated/api";
 import { Button } from "./ui/button";
 import CreateBlogForm from "./create-blog-form";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
 
 export type TBlogFormInputs = {
   title: string;
@@ -27,6 +28,7 @@ type CreateBlogModalProps = {
 
 const CreateBlogModal = ({ hasNoData }: CreateBlogModalProps) => {
   const { user } = useUser();
+  const { toast } = useToast();
   const createBlog = useMutation(api.blogs.createBlog);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [blogFormInputs, setBlogFormInputs] = useState<TBlogFormInputs>({
@@ -48,8 +50,12 @@ const CreateBlogModal = ({ hasNoData }: CreateBlogModalProps) => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    createBlog(blogFormInputs).then((res) => {
+    createBlog(blogFormInputs).then(() => {
       setIsSubmitting(false);
+      toast({
+        title: "Success",
+        description: "Created blog",
+      });
     });
     setBlogFormInputs({
       ...blogFormInputs,
