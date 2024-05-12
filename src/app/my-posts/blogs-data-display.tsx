@@ -24,10 +24,10 @@ const BlogsDataDisplay = ({ blogsData }: BlogsDataDisplayProps) => {
     <Card className="duration-75 hover:shadow-md relative">
       <CardHeader>
         <CardTitle>{blogsData.title}</CardTitle>
-        <small className="font-light">
+        <small className="font-thin">
           {moment(blogsData._creationTime).format("LL")}
         </small>
-        <CardDescription>
+        <CardDescription className="pt-3">
           {truncateText(blogsData.description)}{" "}
           <span className="italic text-xs cursor-pointer hover:underline">
             Read more

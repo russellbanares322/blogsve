@@ -13,7 +13,6 @@ import Link from "next/link";
 
 const Navbar = () => {
   const { isSignedIn } = useUser();
-
   return (
     <nav className="py-3 border-b">
       <div className="container flex items-center justify-between">
