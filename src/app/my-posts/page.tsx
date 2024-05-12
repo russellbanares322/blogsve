@@ -14,7 +14,7 @@ const MyPosts = () => {
   const hasNoBlogCreated = myBlogs?.length === 0;
 
   return (
-    <div className="container">
+    <div className="container min-h-screen h-full">
       <p className="page-title">My Posts</p>
       {hasNoBlogCreated && (
         <div className="flex items-center justify-center flex-col mt-10 gap-4">
