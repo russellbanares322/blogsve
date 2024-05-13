@@ -26,6 +26,7 @@ type CreateBlogModalProps = {
   hasNoData: boolean;
 };
 
+// Implement closing of modal dynamically
 const CreateBlogModal = ({ hasNoData }: CreateBlogModalProps) => {
   const { user } = useUser();
   const { toast } = useToast();
