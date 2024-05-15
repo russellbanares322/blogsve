@@ -12,6 +12,7 @@ type CreateBlogFormProps = {
   isSubmitting: boolean;
 };
 
+// Implement dynamic showing of modal
 const CreateBlogForm = ({
   onSubmit,
   handleBlogFormInputChange,
