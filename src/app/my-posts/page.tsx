@@ -19,7 +19,7 @@ const MyPosts = () => {
       <p className="page-title">{`My Posts - ${blogsDataTotalCount}`}</p>
       {hasNoBlogCreated && (
         <div className="flex items-center justify-center flex-col mt-10 gap-4">
-          <h1>You haven't posted blog yet</h1>
+          <h1>You haven&apos;t posted blog yet</h1>
           <CreateBlogModal hasNoData />
         </div>
       )}
