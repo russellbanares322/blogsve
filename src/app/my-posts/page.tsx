@@ -11,11 +11,12 @@ const MyPosts = () => {
   const userId = user?.id as string;
 
   const myBlogs = useQuery(api.blogs.getBlogByAuthorId, { authorId: userId });
-  const hasNoBlogCreated = myBlogs?.length === 0;
+  const blogsDataTotalCount = myBlogs?.length;
+  const hasNoBlogCreated = blogsDataTotalCount === 0;
 
   return (
     <div className="container min-h-screen h-full">
-      <p className="page-title">My Posts</p>
+      <p className="page-title">{`My Posts - ${blogsDataTotalCount}`}</p>
       {hasNoBlogCreated && (
         <div className="flex items-center justify-center flex-col mt-10 gap-4">
           <h1>You haven't posted blog yet</h1>
