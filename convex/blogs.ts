@@ -39,3 +39,16 @@ export const createBlog = mutation({
         return await ctx.db.insert("blogs", {...args})
     }
 })
+
+export const updateBlog = mutation({
+    args: {
+     id: v.id("blogs"), title: v.string(), description: v.string(), category: v.string()
+    },
+    handler: async (ctx, args) => {
+        return await ctx.db.patch(args.id, {
+            title: args.title,
+            description: args.description,
+            category: args.category,
+        })
+    }
+})
